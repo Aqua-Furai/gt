@@ -1,65 +1,358 @@
-import Image from "next/image";
+'use client';
+
+import React, { useState } from 'react';
+import Header from '@/components/global/Header';
+
+
+const ArrowRightIcon = ({ className = "w-4 h-4" }: { className?: string }) => (
+  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+  </svg>
+);
+
+const PlayIcon = ({ className = "w-4 h-4" }: { className?: string }) => (
+  <svg className={className} fill="currentColor" viewBox="0 0 24 24">
+    <path d="M8 5v14l11-7z" />
+  </svg>
+);
+
+const MODELS = [
+  {
+    id: 'gemera',
+    name: 'Gemera',
+    subtitle: 'The World’s First Mega-GT',
+    power: '2,300 HP',
+    acceleration: '1.9s (0-100 km/h)',
+    topSpeed: '400 km/h',
+    image: 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?q=80&w=1600&auto=format&fit=crop',
+    tag: '4-SEATER HYPERCAR',
+  },
+  {
+    id: 'jesko',
+    name: 'Jesko Attack',
+    subtitle: 'Ultimate Track Weapon',
+    power: '1,600 HP',
+    acceleration: '2.5s (0-100 km/h)',
+    topSpeed: '480+ km/h',
+    image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=1600&auto=format&fit=crop',
+    tag: 'HIGH DOWNFORCE',
+  },
+  {
+    id: 'cc850',
+    name: 'CC850',
+    subtitle: 'Re-imagined Heritage',
+    power: '1,385 HP',
+    acceleration: '2.7s (0-100 km/h)',
+    topSpeed: '450 km/h',
+    image: 'https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?q=80&w=1600&auto=format&fit=crop',
+    tag: 'ENGAGE SHIFT SYSTEM',
+  },
+];
+
+const INNOVATIONS = [
+  {
+    title: 'Dark Matter E-Motor',
+    category: 'Powertrain',
+    description: 'The world’s most powerful patent-pending six-phase electric motor, delivering 800 HP and 1,250 Nm in a lightweight 39 kg package.',
+  },
+  {
+    title: 'Light Speed Transmission (LST)',
+    category: 'Engineering',
+    description: 'Nine forward gears and seven clutches capable of gear changes at virtually light speed, bypassing traditional synchronizers.',
+  },
+  {
+    title: 'Carbon Weave Pre-Preg',
+    category: 'Aerodynamics',
+    description: 'Autoclave-cured high-modulus carbon fiber monocoque delivering industry-leading torsional rigidity of 65,000 Nm/degree.',
+  },
+];
 
 export default function Home() {
+  const [activeModel, setActiveModel] = useState(0);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="bg-black text-white font-sans selection:bg-amber-500 selection:text-black">
+      {/* Header */}
+      <Header />
+
+      {/* 1. HERO SECTION */}
+      <section className="relative h-screen w-full flex items-end pb-16 md:pb-24 px-6 md:px-12 overflow-hidden">
+        {/* Background Overlay & Image/Video */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?q=80&w=2000&auto=format&fit=crop"
+            alt="Koenigsegg Hypercar Hero"
+            className="w-full h-full object-cover object-center scale-105 animate-pulse transition-transform duration-1000"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/60" />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+
+        {/* Hero Content */}
+        <div className="relative z-10 max-w-7xl mx-auto w-full">
+          <div className="max-w-2xl">
+            <span className="inline-block text-xs uppercase tracking-[0.3em] font-semibold text-amber-500 mb-4">
+              Engineering Perfection
+            </span>
+            <h1 className="text-4xl sm:text-6xl md:text-7xl font-light uppercase tracking-[0.15em] leading-none mb-6">
+              Gemera <br />
+              <span className="font-bold text-neutral-200">2,300 HP</span>
+            </h1>
+            <p className="text-sm md:text-base text-neutral-400 font-light tracking-wide max-w-lg mb-8 leading-relaxed">
+              The world's first Mega-GT and the most powerful four-seater hypercar ever conceived. Zero to 100 km/h in 1.9 seconds.
+            </p>
+
+            <div className="flex flex-wrap items-center gap-4">
+              <a
+                href="#models"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-white text-black text-xs uppercase tracking-[0.25em] font-bold hover:bg-neutral-200 transition-colors"
+              >
+                Discover Gemera
+                <ArrowRightIcon />
+              </a>
+              <button className="inline-flex items-center gap-3 px-6 py-4 border border-neutral-700 text-xs uppercase tracking-[0.2em] font-semibold text-white hover:border-white transition-colors backdrop-blur-sm">
+                <PlayIcon className="w-3.5 h-3.5 text-amber-500" />
+                Watch Film
+              </button>
+            </div>
+          </div>
+
+          {/* Key Metrics Bar */}
+          <div className="mt-16 pt-8 border-t border-neutral-800/80 grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div>
+              <p className="text-[10px] uppercase tracking-[0.2em] text-neutral-500">Power Output</p>
+              <p className="text-xl md:text-2xl font-light tracking-wider text-neutral-100 mt-1">2,300 HP</p>
+            </div>
+            <div>
+              <p className="text-[10px] uppercase tracking-[0.2em] text-neutral-500">0 - 100 KM/H</p>
+              <p className="text-xl md:text-2xl font-light tracking-wider text-neutral-100 mt-1">1.9 SEC</p>
+            </div>
+            <div>
+              <p className="text-[10px] uppercase tracking-[0.2em] text-neutral-500">Top Speed</p>
+              <p className="text-xl md:text-2xl font-light tracking-wider text-neutral-100 mt-1">400 KM/H</p>
+            </div>
+            <div>
+              <p className="text-[10px] uppercase tracking-[0.2em] text-neutral-500">Seating</p>
+              <p className="text-xl md:text-2xl font-light tracking-wider text-neutral-100 mt-1">4 Adults</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. MODEL SHOWCASE */}
+      <section id="models" className="py-24 px-6 md:px-12 max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
+          <div>
+            <span className="text-xs uppercase tracking-[0.3em] text-amber-500 font-semibold">
+              The Lineup
+            </span>
+            <h2 className="text-3xl md:text-5xl font-light uppercase tracking-[0.15em] mt-2">
+              Hypercars
+            </h2>
+          </div>
+
+          {/* Model Selector Tabs */}
+          <div className="flex space-x-6 mt-6 md:mt-0 border-b border-neutral-800 pb-2">
+            {MODELS.map((model, idx) => (
+              <button
+                key={model.id}
+                onClick={() => setActiveModel(idx)}
+                className={`text-xs uppercase tracking-[0.2em] transition-colors pb-2 relative ${
+                  activeModel === idx ? 'text-white font-bold' : 'text-neutral-500 hover:text-neutral-300'
+                }`}
+              >
+                {model.name}
+                {activeModel === idx && (
+                  <span className="absolute bottom-0 left-0 w-full h-[2px] bg-amber-500" />
+                )}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Selected Model Showcase Card */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-neutral-950 border border-neutral-800/60 p-6 md:p-12">
+          <div className="lg:col-span-7 relative aspect-[16/9] overflow-hidden group">
+            <img
+              src={MODELS[activeModel].image}
+              alt={MODELS[activeModel].name}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <div className="absolute top-4 left-4 bg-black/80 backdrop-blur-md px-3 py-1 border border-neutral-800 text-[10px] uppercase tracking-[0.2em] text-amber-500 font-semibold">
+              {MODELS[activeModel].tag}
+            </div>
+          </div>
+
+          <div className="lg:col-span-5 flex flex-col justify-between h-full space-y-8">
+            <div>
+              <span className="text-xs uppercase tracking-[0.2em] text-neutral-500">
+                {MODELS[activeModel].subtitle}
+              </span>
+              <h3 className="text-3xl md:text-4xl font-light uppercase tracking-[0.1em] text-white mt-1">
+                {MODELS[activeModel].name}
+              </h3>
+            </div>
+
+            <div className="space-y-4 border-y border-neutral-800 py-6">
+              <div className="flex justify-between items-center">
+                <span className="text-xs uppercase tracking-[0.2em] text-neutral-400">Power</span>
+                <span className="text-sm tracking-widest font-semibold text-white">{MODELS[activeModel].power}</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-xs uppercase tracking-[0.2em] text-neutral-400">0-100 km/h</span>
+                <span className="text-sm tracking-widest font-semibold text-white">{MODELS[activeModel].acceleration}</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-xs uppercase tracking-[0.2em] text-neutral-400">Top Speed</span>
+                <span className="text-sm tracking-widest font-semibold text-white">{MODELS[activeModel].topSpeed}</span>
+              </div>
+            </div>
+
+            <div className="flex gap-4">
+              <a
+                href="#configurator"
+                className="flex-1 text-center py-3.5 bg-white text-black text-xs uppercase tracking-[0.2em] font-bold hover:bg-neutral-200 transition-colors"
+              >
+                Configure
+              </a>
+              <a
+                href={`#${MODELS[activeModel].id}`}
+                className="px-6 py-3.5 border border-neutral-700 text-xs uppercase tracking-[0.2em] font-medium text-neutral-300 hover:text-white hover:border-white transition-colors"
+              >
+                Explore
+              </a>
+            </div>
+          </div>
         </div>
-      </main>
+      </section>
+
+      {/* 3. INNOVATION SPOTLIGHT */}
+      <section id="innovation" className="py-24 bg-neutral-950 border-y border-neutral-900 px-6 md:px-12">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-16">
+            <span className="text-xs uppercase tracking-[0.3em] text-amber-500 font-semibold">
+              Patented Technology
+            </span>
+            <h2 className="text-3xl md:text-5xl font-light uppercase tracking-[0.15em] mt-2">
+              No Compromises
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {INNOVATIONS.map((item, index) => (
+              <div
+                key={index}
+                className="p-8 bg-black border border-neutral-800/80 hover:border-neutral-700 transition-colors flex flex-col justify-between"
+              >
+                <div>
+                  <span className="text-[10px] uppercase tracking-[0.25em] text-amber-500/80 font-mono">
+                    0{index + 1} // {item.category}
+                  </span>
+                  <h3 className="text-lg uppercase tracking-[0.15em] font-medium text-white mt-3 mb-4">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs text-neutral-400 font-light leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+
+                <div className="mt-8 pt-4 border-t border-neutral-900 flex items-center justify-between">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-neutral-500">Read Patent</span>
+                  <ArrowRightIcon className="w-3.5 h-3.5 text-neutral-400" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. CONFIGURATOR CTA BANNER */}
+      <section id="configurator" className="relative py-32 px-6 md:px-12 overflow-hidden text-center">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=2000&auto=format&fit=crop"
+            alt="Configurator Background"
+            className="w-full h-full object-cover opacity-30 grayscale"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black" />
+        </div>
+
+        <div className="relative z-10 max-w-3xl mx-auto space-y-6">
+          <span className="text-xs uppercase tracking-[0.3em] text-amber-500 font-semibold">
+            Bespoke Atelier
+          </span>
+          <h2 className="text-3xl sm:text-5xl font-light uppercase tracking-[0.2em]">
+            Tailor Your Machine
+          </h2>
+          <p className="text-xs sm:text-sm text-neutral-400 font-light tracking-widest max-w-xl mx-auto leading-relaxed">
+            Select exterior carbon weaves, bespoke interior trim, and aerodynamic specifications using our real-time 3D configurator.
+          </p>
+          <div className="pt-4">
+            <button className="px-10 py-4 bg-white text-black text-xs uppercase tracking-[0.25em] font-bold hover:bg-neutral-200 transition-colors shadow-2xl">
+              Launch Configurator
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. FOOTER */}
+      <footer className="border-t border-neutral-900 bg-black py-16 px-6 md:px-12">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-neutral-900">
+          <div>
+            <span className="text-sm tracking-[0.3em] font-light uppercase text-white">
+              Koenigsegg
+            </span>
+            <p className="text-xs text-neutral-500 mt-4 leading-relaxed font-light">
+              Koenigsegg Automotive AB <br />
+              Valhall Park, SE-262 74 <br />
+              Ängelholm, Sweden
+            </p>
+          </div>
+
+          <div>
+            <h4 className="text-xs uppercase tracking-[0.2em] text-neutral-300 font-semibold mb-4">Hypercars</h4>
+            <ul className="space-y-2 text-xs text-neutral-500">
+              <li><a href="#" className="hover:text-white transition-colors">Gemera</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Jesko Attack</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Jesko Absolut</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">CC850</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-xs uppercase tracking-[0.2em] text-neutral-300 font-semibold mb-4">Company</h4>
+            <ul className="space-y-2 text-xs text-neutral-500">
+              <li><a href="#" className="hover:text-white transition-colors">Innovation</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Raw Material</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Careers</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Press & Media</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-xs uppercase tracking-[0.2em] text-neutral-300 font-semibold mb-4">Newsletter</h4>
+            <p className="text-xs text-neutral-500 mb-4 font-light">Receive official news and reveals from Ängelholm.</p>
+            <div className="flex">
+              <input
+                type="email"
+                placeholder="EMAIL ADDRESS"
+                className="bg-neutral-950 border border-neutral-800 text-xs px-3 py-2 focus:outline-none focus:border-neutral-600 text-white w-full uppercase tracking-wider placeholder:text-neutral-600"
+              />
+              <button className="bg-white text-black px-4 text-xs uppercase tracking-widest font-bold hover:bg-neutral-200">
+                Join
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div className="max-w-7xl mx-auto pt-8 flex flex-col sm:flex-row justify-between items-center text-[10px] uppercase tracking-[0.2em] text-neutral-600">
+          <p>© {new Date().getFullYear()} Koenigsegg Automotive AB. All rights reserved.</p>
+          <div className="flex space-x-6 mt-4 sm:mt-0">
+            <a href="#" className="hover:text-neutral-400">Privacy Policy</a>
+            <a href="#" className="hover:text-neutral-400">Terms of Use</a>
+            <a href="#" className="hover:text-neutral-400">Cookies</a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
