@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Header from '@/components/global/Header';
+import Footer from '@/components/global/Footer';
 
 
 const ArrowRightIcon = ({ className = "w-4 h-4" }: { className?: string }) => (
@@ -24,7 +25,7 @@ const MODELS = [
     power: '2,300 HP',
     acceleration: '1.9s (0-100 km/h)',
     topSpeed: '400 km/h',
-    image: 'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?q=80&w=1600&auto=format&fit=crop',
+    image: '/gemera.png',
     tag: '4-SEATER HYPERCAR',
   },
   {
@@ -34,8 +35,18 @@ const MODELS = [
     power: '1,600 HP',
     acceleration: '2.5s (0-100 km/h)',
     topSpeed: '480+ km/h',
-    image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=1600&auto=format&fit=crop',
+    image: '/jeskoattack.png',
     tag: 'HIGH DOWNFORCE',
+  },
+  {
+    id: 'jesko-absolut',
+    name: 'Jesko Absolut',
+    subtitle: 'Record Breaker',
+    power: '1,600 HP',
+    acceleration: '2.5s (0-100 km/h)',
+    topSpeed: '490 km/h',
+    image: '/absolut.png',
+    tag: 'SPPED DEMON',
   },
   {
     id: 'cc850',
@@ -44,7 +55,7 @@ const MODELS = [
     power: '1,385 HP',
     acceleration: '2.7s (0-100 km/h)',
     topSpeed: '450 km/h',
-    image: 'https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?q=80&w=1600&auto=format&fit=crop',
+    image: '/cc850.png',
     tag: 'ENGAGE SHIFT SYSTEM',
   },
 ];
@@ -80,7 +91,7 @@ export default function Home() {
         {/* Background Overlay & Image/Video */}
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?q=80&w=2000&auto=format&fit=crop"
+            src="/sedair-spear.png"
             alt="Koenigsegg Hypercar Hero"
             className="w-full h-full object-cover object-center scale-105 animate-pulse transition-transform duration-1000"
           />
@@ -93,20 +104,17 @@ export default function Home() {
             <span className="inline-block text-xs uppercase tracking-[0.3em] font-semibold text-amber-500 mb-4">
               Engineering Perfection
             </span>
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-light uppercase tracking-[0.15em] leading-none mb-6">
-              Gemera <br />
-              <span className="font-bold text-neutral-200">2,300 HP</span>
+            <h1 className="font-bold text-4xl sm:text-5xl md:text-6xl font-light uppercase tracking-[0.15em] leading-none mb-6">
+              Sadair's Spear <br />
+              <span className="font-bold text-neutral-100">1,625 HP</span>
             </h1>
-            <p className="text-sm md:text-base text-neutral-400 font-light tracking-wide max-w-lg mb-8 leading-relaxed">
-              The world's first Mega-GT and the most powerful four-seater hypercar ever conceived. Zero to 100 km/h in 1.9 seconds.
-            </p>
 
             <div className="flex flex-wrap items-center gap-4">
               <a
                 href="#models"
                 className="inline-flex items-center gap-3 px-8 py-4 bg-white text-black text-xs uppercase tracking-[0.25em] font-bold hover:bg-neutral-200 transition-colors"
               >
-                Discover Gemera
+                Discover Sadair's Spear
                 <ArrowRightIcon />
               </a>
               <button className="inline-flex items-center gap-3 px-6 py-4 border border-neutral-700 text-xs uppercase tracking-[0.2em] font-semibold text-white hover:border-white transition-colors backdrop-blur-sm">
@@ -120,11 +128,11 @@ export default function Home() {
           <div className="mt-16 pt-8 border-t border-neutral-800/80 grid grid-cols-2 md:grid-cols-4 gap-6">
             <div>
               <p className="text-[10px] uppercase tracking-[0.2em] text-neutral-500">Power Output</p>
-              <p className="text-xl md:text-2xl font-light tracking-wider text-neutral-100 mt-1">2,300 HP</p>
+              <p className="text-xl md:text-2xl font-light tracking-wider text-neutral-100 mt-1">1,625 HP</p>
             </div>
             <div>
               <p className="text-[10px] uppercase tracking-[0.2em] text-neutral-500">0 - 100 KM/H</p>
-              <p className="text-xl md:text-2xl font-light tracking-wider text-neutral-100 mt-1">1.9 SEC</p>
+              <p className="text-xl md:text-2xl font-light tracking-wider text-neutral-100 mt-1">2.5 SEC</p>
             </div>
             <div>
               <p className="text-[10px] uppercase tracking-[0.2em] text-neutral-500">Top Speed</p>
@@ -132,7 +140,7 @@ export default function Home() {
             </div>
             <div>
               <p className="text-[10px] uppercase tracking-[0.2em] text-neutral-500">Seating</p>
-              <p className="text-xl md:text-2xl font-light tracking-wider text-neutral-100 mt-1">4 Adults</p>
+              <p className="text-xl md:text-2xl font-light tracking-wider text-neutral-100 mt-1">2 Adults</p>
             </div>
           </div>
         </div>
@@ -294,65 +302,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. FOOTER */}
-      <footer className="border-t border-neutral-900 bg-black py-16 px-6 md:px-12">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-neutral-900">
-          <div>
-            <span className="text-sm tracking-[0.3em] font-light uppercase text-white">
-              Koenigsegg
-            </span>
-            <p className="text-xs text-neutral-500 mt-4 leading-relaxed font-light">
-              Koenigsegg Automotive AB <br />
-              Valhall Park, SE-262 74 <br />
-              Ängelholm, Sweden
-            </p>
-          </div>
-
-          <div>
-            <h4 className="text-xs uppercase tracking-[0.2em] text-neutral-300 font-semibold mb-4">Hypercars</h4>
-            <ul className="space-y-2 text-xs text-neutral-500">
-              <li><a href="#" className="hover:text-white transition-colors">Gemera</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Jesko Attack</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Jesko Absolut</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">CC850</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-xs uppercase tracking-[0.2em] text-neutral-300 font-semibold mb-4">Company</h4>
-            <ul className="space-y-2 text-xs text-neutral-500">
-              <li><a href="#" className="hover:text-white transition-colors">Innovation</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Raw Material</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Careers</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Press & Media</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-xs uppercase tracking-[0.2em] text-neutral-300 font-semibold mb-4">Newsletter</h4>
-            <p className="text-xs text-neutral-500 mb-4 font-light">Receive official news and reveals from Ängelholm.</p>
-            <div className="flex">
-              <input
-                type="email"
-                placeholder="EMAIL ADDRESS"
-                className="bg-neutral-950 border border-neutral-800 text-xs px-3 py-2 focus:outline-none focus:border-neutral-600 text-white w-full uppercase tracking-wider placeholder:text-neutral-600"
-              />
-              <button className="bg-white text-black px-4 text-xs uppercase tracking-widest font-bold hover:bg-neutral-200">
-                Join
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div className="max-w-7xl mx-auto pt-8 flex flex-col sm:flex-row justify-between items-center text-[10px] uppercase tracking-[0.2em] text-neutral-600">
-          <p>© {new Date().getFullYear()} Koenigsegg Automotive AB. All rights reserved.</p>
-          <div className="flex space-x-6 mt-4 sm:mt-0">
-            <a href="#" className="hover:text-neutral-400">Privacy Policy</a>
-            <a href="#" className="hover:text-neutral-400">Terms of Use</a>
-            <a href="#" className="hover:text-neutral-400">Cookies</a>
-          </div>
-        </div>
-      </footer>
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }

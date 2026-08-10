@@ -32,9 +32,8 @@ const ChevronRightIcon = ({ className = "w-4 h-4" }: { className?: string }) => 
   </svg>
 );
 
-// ============================================================================
-// MAIN HEADER COMPONENT
-// ============================================================================
+
+// MAIN HEADER COMPONENT =====================================================================
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -71,8 +70,11 @@ export default function Header() {
           href="#" 
           className="group flex items-center gap-3 text-white tracking-widest text-lg font-extrabold uppercase transition-opacity hover:opacity-80"
         >
-          <span className="w-6 h-7 bg-amber-500 flex items-center justify-center text-[10px] text-black font-black tracking-tighter transition-transform duration-300 group-hover:scale-105 [clip-path:polygon(0_0,100%_0,100%_75%,50%_100%,0_75%)]">
-            K
+          <span className="w-10 h-11 flex items-center justify-center transition-transform duration-300 group-hover:scale-105 [clip-path:polygon(0_0,100%_0,100%_75%,50%_100%,0_75%)]">
+            <img 
+            src="/koenigseggw.svg" 
+            alt="logo"
+            />
           </span>
           <span className="font-sans text-sm tracking-[0.3em] font-light uppercase">
             Koenigsegg
