@@ -6,7 +6,6 @@ import React, { useState, useEffect } from 'react';
 export default function Footer() {
 
     const navLinks = [
-    { name: 'ISO certified', href: '#iso' },
     { name: 'Megacars', href: '#megacars' },
     { name: 'Technology', href: '#technology' },
     { name: 'About', href: '#about' },
@@ -22,30 +21,62 @@ export default function Footer() {
     { name: 'Factory tours', href: '#factory-tours' },
   ];
     return (
-        <footer className="border-t border-neutral-900 bg-white py-16 px-6 md:px-12">
+        <footer className="bg-white py-16 px-6 md:px-12">
 
-            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-neutral-900">
-                /* Brand logo and address */
-                <div>
-                    <img 
+            <div className="max-w-full justify-between flex mx-auto pb-12">
+                {/* Brand Logo */}
+                <div className='flex flex-col ml-[25%] flex-col justify-start'>
+                    <img
                     src="/koenigseggb.svg" 
                     alt="Koenigsegg Logo" 
-                    className="w-19 mb-4"
+                    className="w-50 mb-4"
                     />
                 </div>
-            </div>
 
-            <nav className="hidden md:flex items-center space-x-10">
-                { navLinks.map((link) => (
-                    <a
-                        key={link.name}
-                        href={link.href}
-                        className="text-xs uppercase tracking-[0.2em] text-neutral-300 hover:text-white transition-colors duration-300 font-medium"
-                    >
-                        {link.name}
-                    </a>
-                ))}
-            </nav>
+                <div className='flex flex-col justify-end align-center'>
+                    <img 
+                        src="/koenigseggb.svg" 
+                        alt="iso-Logo"
+                        className="w-19"
+                    />
+                    <span className='flex text-xl uppercase text-neutral-900 font-semibold'>
+                        ISO Certified 9001
+                    </span>
+                </div>
+
+                {/* Navigation for Pages  */}
+                <div className='flex gap-25 pr-[20%]'>
+                    <nav className="hidden md:flex space-x-10 flex-col">
+                        { navLinks.map((link) => (
+                            <a
+                                key={link.name}
+                                href={link.href}
+                                className="text-s uppercase pt-5 tracking-[0.2em] text-neutral-900 hover:text-gray-400 transition-color duration-500"
+                            >
+                                {link.name}
+                            </a>
+                        ))}
+                    </nav>
+
+                    <nav className='hidden md:flex space-x-10 flex-col'>
+                        { actionLinks.map((link) => (
+                            <a 
+                                key={link.name}
+                                href={link.href}
+                                className="text-s uppercase pt-5 tracking-[0.2em] text-neutral-900 hover:text-gray-400 transition-color duration-500"
+                            >
+                                {link.name}
+                            </a>
+                        ))}
+                    </nav>
+                </div>
+              
+            </div>
+            <hr className='border-neutral-900'/>
+
+            <p className='text-neutral-900 pt-6 pl-10'>
+                © {new Date().getFullYear()} Koenigsegg Automotive AB. All rights reserved.
+            </p>
         </footer>
     );
 }
