@@ -19,9 +19,19 @@ const PlayIcon = ({ className = "w-4 h-4" }: { className?: string }) => (
 
 const MODELS = [
   {
+    id: 'sedair-spear',
+    name: "Sedair's Spear",
+    subtitle: 'Performance without compromise',
+    power: '1,625 HP',
+    acceleration: '2.5s (0-100 km/h)',
+    topSpeed: '400+ km/h',
+    image: '/spear.png',
+    tag: 'Performance monster',
+  },
+  {
     id: 'gemera',
     name: 'Gemera',
-    subtitle: 'The World’s First Mega-GT',
+    subtitle: "The World's First Mega-GT",
     power: '2,300 HP',
     acceleration: '1.9s (0-100 km/h)',
     topSpeed: '400 km/h',
@@ -56,7 +66,7 @@ const MODELS = [
     acceleration: '2.7s (0-100 km/h)',
     topSpeed: '450 km/h',
     image: '/cc850.png',
-    tag: 'ENGAGE SHIFT SYSTEM',
+    tag: "The driver's dream",
   },
 ];
 
@@ -78,6 +88,8 @@ const INNOVATIONS = [
   },
 ];
 
+import Link from 'next/link';
+
 export default function Home() {
   const [activeModel, setActiveModel] = useState(0);
 
@@ -91,7 +103,7 @@ export default function Home() {
         {/* Background Overlay & Image/Video */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/sedair-spear.png"
+            src="/ccgt.png"
             alt="Koenigsegg Hypercar Hero"
             className="w-full h-full object-cover object-center scale-105 animate-pulse transition-transform duration-1000"
           />
@@ -105,22 +117,24 @@ export default function Home() {
               Engineering Perfection
             </span>
             <h1 className="font-bold text-4xl sm:text-5xl md:text-6xl font-light uppercase tracking-[0.15em] leading-none mb-6">
-              Sadair's Spear <br />
-              <span className="font-bold text-neutral-100">1,625 HP</span>
+              CCGT1 <br />
+              <span className="font-bold text-neutral-100">1,280 HP</span>
             </h1>
 
             <div className="flex flex-wrap items-center gap-4">
               <a
-                href="#models"
+                href="https://www.koenigsegg.com/model/CCGT1"
                 className="inline-flex items-center gap-3 px-8 py-4 bg-white text-black text-xs uppercase tracking-[0.25em] font-bold hover:bg-neutral-200 transition-colors"
               >
-                Discover Sadair's Spear
+                Discover CCGT1
                 <ArrowRightIcon />
               </a>
-              <button className="inline-flex items-center gap-3 px-6 py-4 border border-neutral-700 text-xs uppercase tracking-[0.2em] font-semibold text-white hover:border-white transition-colors backdrop-blur-sm">
-                <PlayIcon className="w-3.5 h-3.5 text-amber-500" />
-                Watch Film
-              </button>
+              <Link href="https://www.youtube.com/watch?v=XHf6PUsb1eE" target="_blank" rel="noopener noreferrer">
+                <button className="inline-flex items-center gap-3 px-6 py-4 border border-neutral-700 text-xs uppercase tracking-[0.2em] font-semibold text-white hover:border-white transition-colors backdrop-blur-sm">
+                  <PlayIcon className="w-3.5 h-3.5 text-amber-500" />
+                  Watch Film
+                </button>
+              </Link>
             </div>
           </div>
 
@@ -128,15 +142,15 @@ export default function Home() {
           <div className="mt-16 pt-8 border-t border-neutral-800/80 grid grid-cols-2 md:grid-cols-4 gap-6">
             <div>
               <p className="text-[10px] uppercase tracking-[0.2em] text-neutral-500">Power Output</p>
-              <p className="text-xl md:text-2xl font-light tracking-wider text-neutral-100 mt-1">1,625 HP</p>
+              <p className="text-xl md:text-2xl font-light tracking-wider text-neutral-100 mt-1">1,280 HP</p>
             </div>
             <div>
               <p className="text-[10px] uppercase tracking-[0.2em] text-neutral-500">0 - 100 KM/H</p>
-              <p className="text-xl md:text-2xl font-light tracking-wider text-neutral-100 mt-1">2.5 SEC</p>
+              <p className="text-xl md:text-2xl font-light tracking-wider text-neutral-100 mt-1">3.0 SEC</p>
             </div>
             <div>
               <p className="text-[10px] uppercase tracking-[0.2em] text-neutral-500">Top Speed</p>
-              <p className="text-xl md:text-2xl font-light tracking-wider text-neutral-100 mt-1">400 KM/H</p>
+              <p className="text-xl md:text-2xl font-light tracking-wider text-neutral-100 mt-1">350+ KM/H</p>
             </div>
             <div>
               <p className="text-[10px] uppercase tracking-[0.2em] text-neutral-500">Seating</p>
@@ -294,11 +308,12 @@ export default function Home() {
           <p className="text-xs sm:text-sm text-neutral-400 font-light tracking-widest max-w-xl mx-auto leading-relaxed">
             Select exterior carbon weaves, bespoke interior trim, and aerodynamic specifications using our real-time 3D configurator.
           </p>
-          <div className="pt-4">
-            <button className="px-10 py-4 bg-white text-black text-xs uppercase tracking-[0.25em] font-bold hover:bg-neutral-200 transition-colors shadow-2xl">
-              Launch Configurator
-            </button>
-          </div>
+          <Link 
+          href="/page2"
+          className="px-10 py-4 bg-white text-black text-xs uppercase tracking-[0.25em] font-bold hover:bg-neutral-200 transition-colors shadow-2xl"
+          >
+            Launch Configurator
+          </Link>
         </div>
       </section>
 
