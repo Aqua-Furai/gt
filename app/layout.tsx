@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Koenigsegg | Hypercars',
+  title: 'Koenigsegg | Home',
   description: 'Official Koenigsegg-inspired hypercar website',
 };
 
